@@ -61,7 +61,7 @@ describe('growUp', () => {
 
   });
 
-  describe('walk', () => {
+describe('walk', () => {
     it('increments fitness by 4', () => {
       const pet = new Pet('Fido');
       pet.fitness = 4; 
@@ -86,7 +86,7 @@ describe('growUp', () => {
 
   });
 
-  describe('feed', () => {
+describe('feed', () => {
     it('decreases hunger level by 3', () => {
       const pet = new Pet('Fido');
       pet.hunger = 4; 
@@ -110,9 +110,10 @@ describe('growUp', () => {
 
   });
 
-  describe('checkUp', () => {
-    it('returns I want FOOD and walkies if fitness is 3 or less and hunger is 5 or more', () => {
+describe('checkUp', () => {
       const pet = new Pet('Fido');
+
+    it('returns I want FOOD and walkies if fitness is 3 or less and hunger is 5 or more', () => {
       pet.fitness = 2; 
       pet.hunger = 6; 
       expect(pet.checkUp()).toBe("I want FOOD and walkies!");
@@ -124,25 +125,62 @@ describe('growUp', () => {
 
 
     it('returns I want walkies if fitness is 3 or less', () => {
-      const pet = new Pet('Fido');
       pet.fitness = 2; 
+      pet.hunger = 4;
       expect(pet.checkUp()).toBe("I want walkies");
     });
 
     it('returns Feed me now is hunger is 5 or more', () => {
-      const pet = new Pet('Fido');
       pet.hunger = 6; 
+      pet.fitness = 5; 
       expect(pet.checkUp()).toBe("Feed me now!");
     });
 
     it('returns I feel great if does not need feeding or walking', () => {
-      const pet = new Pet('Fido');
       pet.hunger = 4; 
       pet.fitness = 5; 
       expect(pet.checkUp()).toBe("I feel great!");
     });
+  });
 
+describe('isAlive', () => {
+  const pet = new Pet('Fido');
+
+    it('returns false if fitness is 0 or less', () => {
+      pet.fitness = 0; 
+      expect(pet.isAlive).toBe(false);
+    });
+
+
+    it('returns false if hunger is 10 or more', () => {
+      pet.hunger = 12; 
+      expect(pet.isAlive).toBe(false);
+    });
+
+    it('returns false if age is 30 or more', () => {
+      pet.age = 33; 
+      expect(pet.isAlive).toBe(false);
+    });
+
+    it('returns returns true otherwise', () => {
+      pet.age = 14;
+      pet.hunger = 3;
+      pet.fitness = 4; 
+      expect(pet.isAlive).toBe(true);
+    });
 
   });
+
+
+
+  /*Your challenge in this step is to give the Pet function an isAlive property that really lets you know how the pet is feeling.
+
+    if the pet's fitness is 0 or less, it should return false.
+
+    if the pet's hunger is 10 or more, it should return false.
+
+    if the pet's age is 30 or more, it should return false.
+
+    otherwise it should return true. */
 
 
