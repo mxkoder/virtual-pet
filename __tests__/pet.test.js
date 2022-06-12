@@ -85,3 +85,26 @@ describe('growUp', () => {
 
   });
 
+  describe('feed', () => {
+    it('decreases hunger level by 3', () => {
+      const pet = new Pet('Fido');
+      pet.hunger = 4; 
+      pet.feed();
+      expect(pet.hunger).toEqual(1);
+
+      pet.hunger = 8;
+      pet.feed();
+      expect(pet.hunger).toEqual(5);
+    });
+
+    it('does not decrease the hunger level below 0', () => {
+      const pet = new Pet('Fido');
+      pet.hunger = 2; 
+      pet.feed();
+      expect(pet.hunger).toEqual(0);
+
+      pet.feed();
+      expect(pet.hunger).toEqual(0);
+    });
+
+  });
