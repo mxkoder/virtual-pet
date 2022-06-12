@@ -59,6 +59,20 @@ describe('growUp', () => {
       expect(pet.fitness).toEqual(4);
     });
 
+    it('returns I can\'t grow up, I\'m dead if the pet is no longer alive', () => {
+      const pet = new Pet('Fido');
+      pet.age = 30;
+      expect(() => pet.growUp()).toThrow("I can\'t grow up, I\'m dead :(");
+
+      pet.fitness = 0;
+      expect(() => pet.growUp()).toThrow("I can\'t grow up, I\'m dead :(");
+
+      pet.hunger = 10;
+      expect(() => pet.growUp()).toThrow("I can\'t grow up, I\'m dead :(");
+
+      pet.isAlive = false;
+      expect(() => pet.growUp()).toThrow("I can\'t grow up, I\'m dead :(");
+    });
   });
 
 describe('walk', () => {
@@ -82,6 +96,18 @@ describe('walk', () => {
 
       pet.walk();
       expect(pet.fitness).toEqual(10);
+    });
+
+    it('returns I can\'t walk, I\'m dead if the pet is no longer alive', () => {
+      const pet = new Pet('Fido');
+      pet.fitness = -1;
+      expect(() => pet.walk()).toThrow("I can\'t walk, I\'m dead :(");
+
+      pet.hunger = 10;
+      expect(() => pet.walk()).toThrow("I can\'t walk, I\'m dead :(");
+
+      pet.isAlive = false;
+      expect(() => pet.walk()).toThrow("I can\'t walk, I\'m dead :(");
     });
 
   });
@@ -173,14 +199,14 @@ describe('isAlive', () => {
 
 
 
-  /*Your challenge in this step is to give the Pet function an isAlive property that really lets you know how the pet is feeling.
+  /*Your challenge in this step is to add some guard clauses to the walk,
+   growUp and feed functions to prevent them from being used if the pet is not alive. 
+   We also need to an a new return value to the checkUp function.
 
-    if the pet's fitness is 0 or less, it should return false.
+    if the pet is not alive, the checkUp function should return 'Your pet is no longer alive :('
 
-    if the pet's hunger is 10 or more, it should return false.
-
-    if the pet's age is 30 or more, it should return false.
-
-    otherwise it should return true. */
+    if the pet is not alive, the walk, growUp and 
+    feed functions should each throw an exception 
+    'Your pet is no longer alive :('.*/
 
 

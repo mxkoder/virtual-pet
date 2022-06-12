@@ -27,12 +27,19 @@ Pet.prototype = {
 }; 
 
 Pet.prototype.growUp = function () {
+    if (!this.isAlive) {
+        throw "I can\'t grow up, I\'m dead :(";
+    } else {
     this.age += 1;
     this.hunger += 5;
     this.fitness -= 3;
+    };
 };
 
 Pet.prototype.walk = function () {
+    if (!this.isAlive) {
+        throw "I can\'t walk, I\'m dead :(";
+    }
     if ((this.fitness + 4) <= MAX_FITNESS) {
         this.fitness += 4;
     } else {
