@@ -74,7 +74,4 @@ Pet.prototype.checkUp = function () {
 };
 
 
-
-
-
 module.exports = Pet;

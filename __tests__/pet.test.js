@@ -194,7 +194,7 @@ describe('checkUp', () => {
   });
 
 describe('isAlive', () => {
-  const pet = new Pet('Fido');
+    const pet = new Pet('Fido');
 
     it('returns false if fitness is 0 or less', () => {
       pet.fitness = 0; 
@@ -223,15 +223,5 @@ describe('isAlive', () => {
 
 
 
-  /*Your challenge in this step is to add some guard clauses to the walk,
-   growUp and feed functions to prevent them from being used if the pet is not alive. 
-   
-   We also need to an a new return value to the checkUp function.
-
-    if the pet is not alive, the checkUp function should return 'Your pet is no longer alive :('
-
-    if the pet is not alive, the walk, growUp and 
-    feed functions should each throw an exception 
-    'Your pet is no longer alive :('.*/
 
 
