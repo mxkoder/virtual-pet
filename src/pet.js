@@ -47,6 +47,9 @@ Pet.prototype.walk = function () {
 };
 
 Pet.prototype.feed = function () {
+    if (!this.isAlive) {
+        throw "I can\'t eat, I\'m dead :(";
+    }
     if ((this.hunger - 3) > MIN_HUNGER) {
         this.hunger -= 3;
     } else {

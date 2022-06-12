@@ -134,6 +134,18 @@ describe('feed', () => {
       expect(pet.hunger).toEqual(0);
     });
 
+    it('returns I can\'t eat, I\'m dead if the pet is no longer alive', () => {
+      const pet = new Pet('Fido');
+      pet.age = 31;
+      expect(() => pet.feed()).toThrow("I can\'t eat, I\'m dead :(");
+
+      pet.hunger = 11;
+      expect(() => pet.feed()).toThrow("I can\'t eat, I\'m dead :(");
+
+      pet.isAlive = false;
+      expect(() => pet.feed()).toThrow("I can\'t eat, I\'m dead :(");
+    });
+
   });
 
 describe('checkUp', () => {
@@ -201,6 +213,7 @@ describe('isAlive', () => {
 
   /*Your challenge in this step is to add some guard clauses to the walk,
    growUp and feed functions to prevent them from being used if the pet is not alive. 
+   
    We also need to an a new return value to the checkUp function.
 
     if the pet is not alive, the checkUp function should return 'Your pet is no longer alive :('
