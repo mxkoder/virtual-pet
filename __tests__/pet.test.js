@@ -1,6 +1,7 @@
 
 const Pet = require('../src/pet');
 
+// need to refactor tests to remove magic numbers
 
 describe('constructor', () => {
     it('returns an object', () => {
@@ -110,11 +111,37 @@ describe('growUp', () => {
   });
 
   describe('checkUp', () => {
+    it('returns I want FOOD and walkies if fitness is 3 or less and hunger is 5 or more', () => {
+      const pet = new Pet('Fido');
+      pet.fitness = 2; 
+      pet.hunger = 6; 
+      expect(pet.checkUp()).toBe("I want FOOD and walkies!");
+
+      pet.fitness = 3; 
+      pet.hunger = 5; 
+      expect(pet.checkUp()).toBe("I want FOOD and walkies!");
+    });
+
+
     it('returns I want walkies if fitness is 3 or less', () => {
       const pet = new Pet('Fido');
       pet.fitness = 2; 
       expect(pet.checkUp()).toBe("I want walkies");
     });
+
+    it('returns Feed me now is hunger is 5 or more', () => {
+      const pet = new Pet('Fido');
+      pet.hunger = 6; 
+      expect(pet.checkUp()).toBe("Feed me now!");
+    });
+
+    it('returns I feel great if does not need feeding or walking', () => {
+      const pet = new Pet('Fido');
+      pet.hunger = 4; 
+      pet.fitness = 5; 
+      expect(pet.checkUp()).toBe("I feel great!");
+    });
+
 
   });
 

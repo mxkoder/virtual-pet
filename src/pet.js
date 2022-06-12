@@ -31,9 +31,18 @@ Pet.prototype.feed = function () {
 };
 
 Pet.prototype.checkUp = function () {
+    if (this.fitness <= NEED_WALK_FITNESS && this.hunger >= NEED_FEED_HUNGER) {
+        return "I want FOOD and walkies!";
+    }
+
     if (this.fitness <= NEED_WALK_FITNESS ) {
         return "I want walkies";
-};
+    }
+    if (this.hunger >= NEED_FEED_HUNGER ) {
+        return "Feed me now!";
+    } else {
+        return "I feel great!";
+    }
 };
 
 
