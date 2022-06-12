@@ -1,5 +1,7 @@
 const MAX_FITNESS = 10;
 const MIN_HUNGER = 0;
+const NEED_WALK_FITNESS = 3;
+const NEED_FEED_HUNGER = 5;
 
 function Pet(name) {
     this.name = name;
@@ -28,7 +30,11 @@ Pet.prototype.feed = function () {
     this.hunger = MIN_HUNGER;}
 };
 
-
+Pet.prototype.checkUp = function () {
+    if (this.fitness <= NEED_WALK_FITNESS ) {
+        return "I want walkies";
+};
+};
 
 
 

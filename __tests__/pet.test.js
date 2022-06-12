@@ -108,3 +108,14 @@ describe('growUp', () => {
     });
 
   });
+
+  describe('checkUp', () => {
+    it('returns I want walkies if fitness is 3 or less', () => {
+      const pet = new Pet('Fido');
+      pet.fitness = 2; 
+      expect(pet.checkUp()).toBe("I want walkies");
+    });
+
+  });
+
+
