@@ -179,6 +179,18 @@ describe('checkUp', () => {
       pet.fitness = 5; 
       expect(pet.checkUp()).toBe("I feel great!");
     });
+
+    it('returns I\m not doing great, I\'m dead :( if the pet is no longer alive', () => {
+      const pet = new Pet('Fido');
+      pet.age = 30;
+      expect(() => pet.checkUp()).toThrow("I\m not doing great, I\'m dead :(");
+
+      pet.hunger = 14;
+      expect(() => pet.checkUp()).toThrow("I\m not doing great, I\'m dead :(");
+
+      pet.isAlive = false;
+      expect(() => pet.checkUp()).toThrow("I\m not doing great, I\'m dead :(");
+    });
   });
 
 describe('isAlive', () => {

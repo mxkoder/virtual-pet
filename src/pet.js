@@ -57,6 +57,9 @@ Pet.prototype.feed = function () {
 };
 
 Pet.prototype.checkUp = function () {
+    if (!this.isAlive) {
+        throw "I\m not doing great, I\'m dead :(";
+    }
     if (this.fitness <= NEED_WALK_FITNESS && this.hunger >= NEED_FEED_HUNGER) {
         return "I want FOOD and walkies!";
     }
