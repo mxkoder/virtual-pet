@@ -233,7 +233,7 @@ describe('isAlive', () => {
       
     });
 
-    it('returns a pet object that is alive', () => {
+    it('returns changes the values of the pet object to make the pet alive again', () => {
       pet.age = 31;
       pet.hunger = 11;
       pet.fitness = -3; 
