@@ -74,4 +74,18 @@ Pet.prototype.checkUp = function () {
 };
 
 
+Pet.prototype.resurrect = function () {
+    if (!this.isAlive) {
+        this.age = MAX_AGE / 2;
+        this.hunger = NEED_FEED_HUNGER - 2;
+        this.fitness = NEED_WALK_FITNESS + 2;
+        return "whoooooooosh....  I\'m back! ʕ•ᴥ•ʔ";
+    }
+
+    return "I\'m alive!! You can\'t resurrect me.";
+    
+};
+
+
+
 module.exports = Pet;

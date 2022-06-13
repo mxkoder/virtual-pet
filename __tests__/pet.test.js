@@ -222,6 +222,37 @@ describe('isAlive', () => {
   });
 
 
+  describe('resurrect', () => {
+    const pet = new Pet('Fido');
+
+    it('returns a statement that says the pet is back', () => {
+      pet.age = 31;
+      pet.hunger = 10;
+      pet.fitness = 0; 
+      expect(pet.resurrect()).toBe("whoooooooosh....  I\'m back! ʕ•ᴥ•ʔ");
+      
+    });
+
+    it('returns a pet object that is alive', () => {
+      pet.age = 31;
+      pet.hunger = 11;
+      pet.fitness = -3; 
+      pet.resurrect();
+
+      expect(pet.age).toEqual(15);
+      expect(pet.hunger).toEqual(3);
+      expect(pet.fitness).toEqual(5);
+    });
+
+    it('returns an error statement when applied to a pet that is alive', () => {
+      pet.age = 25;
+      pet.hunger = 5;
+      pet.fitness = 2; 
+      expect(pet.resurrect()).toBe("I\'m alive!! You can\'t resurrect me.");
+    });
+    
+  });
+
 
 
 
