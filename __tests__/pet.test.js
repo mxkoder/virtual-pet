@@ -241,7 +241,7 @@ describe('isAlive', () => {
 
       expect(pet.age).toEqual(15);
       expect(pet.hunger).toEqual(3);
-      expect(pet.fitness).toEqual(5);
+      expect(pet.fitness).toEqual(6);
     });
 
     it('returns an error statement when applied to a pet that is alive', () => {

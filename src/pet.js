@@ -3,16 +3,20 @@ const MIN_AGE = 0;
 const MIN_HUNGER = 0;
 const MAX_FITNESS = 10;
 
-// Increments and decrements for growing up
+//Growing up increments and decrements 
 const GROWUP_AGE_INCREMENT = 1;
 const GROWUP_HUNGER_INCREMENT = 5;
 const GROWUP_FITNESS_DECREMENT = 3;
 
-//Threshold values for needing care
+//Replenishment increments and decrements walk and feed
+const WALK_FITNESS_INCREMENT = 4;
+const FEED_HUNGER_DECREMENT = 3;
+
+//Threshold values for the pet needing care
 const NEED_WALK_FITNESS = 3;
 const NEED_FEED_HUNGER = 5;
 
-//Threshold values for being alive
+//Threshold values for the pet being alive
 const MAX_AGE = 30;
 const MAX_HUNGER = 10;
 const MIN_FITNESS = 0;
@@ -45,8 +49,8 @@ Pet.prototype.walk = function () {
     if (!this.isAlive) {
         throw new Error ("I can\'t walk, I\'m dead :(");
     }
-    if ((this.fitness + 4) <= MAX_FITNESS) {
-        this.fitness += 4;
+    if ((this.fitness + WALK_FITNESS_INCREMENT) <= MAX_FITNESS) {
+        this.fitness += WALK_FITNESS_INCREMENT;
     } else {
     this.fitness = MAX_FITNESS;}
 };
@@ -55,8 +59,8 @@ Pet.prototype.feed = function () {
     if (!this.isAlive) {
         throw new Error ("I can\'t eat, I\'m dead :(");
     }
-    if ((this.hunger - 3) > MIN_HUNGER) {
-        this.hunger -= 3;
+    if ((this.hunger - FEED_HUNGER_DECREMENT) > MIN_HUNGER) {
+        this.hunger -= FEED_HUNGER_DECREMENT;
     } else {
     this.hunger = MIN_HUNGER;}
 };
@@ -82,8 +86,8 @@ Pet.prototype.checkUp = function () {
 Pet.prototype.resurrect = function () {
     if (!this.isAlive) {
         this.age = MAX_AGE / 2;
-        this.hunger = NEED_FEED_HUNGER - 2;
-        this.fitness = NEED_WALK_FITNESS + 2;
+        this.hunger = NEED_FEED_HUNGER - (FEED_HUNGER_DECREMENT- 1);
+        this.fitness = NEED_WALK_FITNESS + (WALK_FITNESS_INCREMENT - 1); 
         return "whoooooooosh....  I\'m back! ʕ•ᴥ•ʔ";
     }
 
