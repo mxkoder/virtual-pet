@@ -28,7 +28,7 @@ Pet.prototype = {
 
 Pet.prototype.growUp = function () {
     if (!this.isAlive) {
-        throw "I can\'t grow up, I\'m dead :(";
+        throw new Error ("I can\'t grow up, I\'m dead :(");
     } else {
     this.age += 1;
     this.hunger += 5;
@@ -38,7 +38,7 @@ Pet.prototype.growUp = function () {
 
 Pet.prototype.walk = function () {
     if (!this.isAlive) {
-        throw "I can\'t walk, I\'m dead :(";
+        throw new Error ("I can\'t walk, I\'m dead :(");
     }
     if ((this.fitness + 4) <= MAX_FITNESS) {
         this.fitness += 4;
@@ -48,7 +48,7 @@ Pet.prototype.walk = function () {
 
 Pet.prototype.feed = function () {
     if (!this.isAlive) {
-        throw "I can\'t eat, I\'m dead :(";
+        throw new Error ("I can\'t eat, I\'m dead :(");
     }
     if ((this.hunger - 3) > MIN_HUNGER) {
         this.hunger -= 3;
@@ -58,7 +58,7 @@ Pet.prototype.feed = function () {
 
 Pet.prototype.checkUp = function () {
     if (!this.isAlive) {
-        throw "I\m not doing great, I\'m dead :(";
+        throw new Error ("I\m not doing great, I\'m dead :(");
     }
     if (this.fitness <= NEED_WALK_FITNESS && this.hunger >= NEED_FEED_HUNGER) {
         return "I want FOOD and walkies!";
