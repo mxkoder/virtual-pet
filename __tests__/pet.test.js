@@ -248,7 +248,8 @@ describe('isAlive', () => {
       pet.age = 25;
       pet.hunger = 5;
       pet.fitness = 2; 
-      expect(pet.resurrect()).toBe("I\'m alive!! You can\'t resurrect me.");
+      //expect(pet.resurrect()).toBe("I\'m alive!! You can\'t resurrect me.");
+      expect(() => pet.resurrect()).toThrow("I\'m alive!! You can\'t resurrect me.");
     });
     
   });

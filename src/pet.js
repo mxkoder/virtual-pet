@@ -82,7 +82,7 @@ Pet.prototype.resurrect = function () {
         return "whoooooooosh....  I\'m back! ʕ•ᴥ•ʔ";
     }
 
-    return "I\'m alive!! You can\'t resurrect me.";
+    throw new Error ("I\'m alive!! You can\'t resurrect me.");
     
 };
 
