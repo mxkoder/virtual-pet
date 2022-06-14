@@ -16,7 +16,7 @@ const FEED_HUNGER_DECREMENT = 3;
 const NEED_WALK_FITNESS = 3;
 const NEED_FEED_HUNGER = 5;
 
-//Threshold values for the pet being alive
+// Limit values for the pet being alive
 const MAX_AGE = 30;
 const MAX_HUNGER = 10;
 const MIN_FITNESS = 0;
