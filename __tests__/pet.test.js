@@ -138,7 +138,7 @@ describe('feed', () => {
       const pet = new Pet('Fido');
       pet.age = 31;
       expect(() => pet.feed()).toThrow("I can\'t eat, I\'m dead :(");
-
+// expect(() => pet.feed()).toThrow('Your pet is no longer alive :(');
       pet.hunger = 11;
       expect(() => pet.feed()).toThrow("I can\'t eat, I\'m dead :(");
 
@@ -183,13 +183,13 @@ describe('checkUp', () => {
     it('returns I\m not doing great, I\'m dead :( if the pet is no longer alive', () => {
       const pet = new Pet('Fido');
       pet.age = 30;
-      expect(() => pet.checkUp()).toThrow("I\m not doing great, I\'m dead :(");
+      expect(() => pet.checkUp()).toThrow("I\'m not doing great, I\'m dead :(");
 
       pet.hunger = 14;
-      expect(() => pet.checkUp()).toThrow("I\m not doing great, I\'m dead :(");
+      expect(() => pet.checkUp()).toThrow("I\'m not doing great, I\'m dead :(");
 
       pet.isAlive = false;
-      expect(() => pet.checkUp()).toThrow("I\m not doing great, I\'m dead :(");
+      expect(() => pet.checkUp()).toThrow("I\'m not doing great, I\'m dead :(");
     });
   });
 
