@@ -3,6 +3,11 @@ const MIN_AGE = 0;
 const MIN_HUNGER = 0;
 const MAX_FITNESS = 10;
 
+// Increments and decrements for growing up
+const GROWUP_AGE_INCREMENT = 1;
+const GROWUP_HUNGER_INCREMENT = 5;
+const GROWUP_FITNESS_DECREMENT = 3;
+
 //Threshold values for needing care
 const NEED_WALK_FITNESS = 3;
 const NEED_FEED_HUNGER = 5;
@@ -30,9 +35,9 @@ Pet.prototype.growUp = function () {
     if (!this.isAlive) {
         throw new Error ("I can\'t grow up, I\'m dead :(");
     } else {
-    this.age += 1;
-    this.hunger += 5;
-    this.fitness -= 3;
+    this.age += GROWUP_AGE_INCREMENT;
+    this.hunger += GROWUP_HUNGER_INCREMENT;
+    this.fitness -= GROWUP_FITNESS_DECREMENT;
     };
 };
 
