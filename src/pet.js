@@ -95,6 +95,18 @@ Pet.prototype.resurrect = function () {
     
 };
 
+// Having a baby: dependency injection
+Pet.prototype.adoptChild = function (child) {
+    if (this.children) {
+    this.children.unshift(child); 
+    };
+
+    if (!this.children) {
+    this.children = [child];
+    };
+
+    
+};
 
 
 module.exports = Pet;

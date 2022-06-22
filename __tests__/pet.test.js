@@ -222,7 +222,7 @@ describe('isAlive', () => {
   });
 
 
-  describe('resurrect', () => {
+describe('resurrect', () => {
     const pet = new Pet('Fido');
 
     it('returns a statement that says the pet is back', () => {
@@ -248,12 +248,28 @@ describe('isAlive', () => {
       pet.age = 25;
       pet.hunger = 5;
       pet.fitness = 2; 
-      //expect(pet.resurrect()).toBe("I\'m alive!! You can\'t resurrect me.");
       expect(() => pet.resurrect()).toThrow("I\'m alive!! You can\'t resurrect me.");
     });
-    
+
   });
+    
+// Having a baby: dependency injection
+    describe('adoptChild', () => {
+      
+      it('the parent pet has a property called children, where the first element is the child instance originally passed to the adoptChild method', () => {
+        const parent = new Pet('Fido');
+        const child = new Pet('ChildOfFido');
+        parent.adoptChild(child);
+        expect(parent.children).toEqual([{ name: 'ChildOfFido', age: 0, hunger: 0, fitness: 10 }]);
+      });
 
+      it('adds the new child instance passed as an argument to the adoptChild method as the first object to the array in the children property of the parent', () => {
+        const parent2 = new Pet('Fido2');
+        const child1 = new Pet('ChildOfFido');
+        const child2 = new Pet('SecondChildOfFido');
+        parent2.adoptChild(child1);
+        parent2.adoptChild(child2);
+        expect(parent2.children).toEqual([{ name: 'SecondChildOfFido', age: 0, hunger: 0, fitness: 10 }, { name: 'ChildOfFido', age: 0, hunger: 0, fitness: 10 }]);
+      });
 
-
-
+  });
