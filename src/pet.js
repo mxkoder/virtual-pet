@@ -95,7 +95,7 @@ Pet.prototype.resurrect = function () {
     
 };
 
-// Having a baby: dependency injection
+// Adopting a child: dependency injection
 Pet.prototype.adoptChild = function (child) {
     if (this.children) {
     this.children.unshift(child); 
@@ -107,6 +107,20 @@ Pet.prototype.adoptChild = function (child) {
 
     
 };
+
+
+// Having a baby: creating a new child object of the same instance as the parent
+Pet.prototype.haveBaby = function (childname) {
+    let child = new Pet(`${childname}`);
+    if (this.children) {
+    this.children.unshift(child);
+    };
+
+    if (!this.children) {
+    this.children = [child];
+    };
+};
+
 
 
 module.exports = Pet;

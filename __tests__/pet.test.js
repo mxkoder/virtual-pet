@@ -253,7 +253,7 @@ describe('resurrect', () => {
 
   });
     
-// Having a baby: dependency injection
+// Adopting a child: dependency injection
     describe('adoptChild', () => {
       
       it('the parent pet has a property called children, where the first element is the child instance originally passed to the adoptChild method', () => {
@@ -273,3 +273,29 @@ describe('resurrect', () => {
       });
 
   });
+
+  // Having a baby: creating a new child object of the same instance as the parent
+  describe('haveBaby', () => {
+    const parent = new Pet('Dave');
+    parent.haveBaby('Amelia');
+
+    it('results in the parent pet\'s children property being an array', () => {
+      expect(Array.isArray(parent.children)).toBeTruthy();
+    });
+
+    it('results in the first element of the children property array of the parent being an instance of Pet', () => {
+      expect(parent.children[0] instanceof Pet).toBeTruthy();
+    });
+
+    it('creates an object with a name property of the child\'s name', () => {
+      expect(parent.children[0].name).toBe('Amelia');
+    });
+});
+
+
+  /* Make 1 Pet instances - the parent.
+
+  Call a method on the parent pet, which you pass the child's name into as an argument e.g. haveBaby('Amelia').
+
+  Assert that the parent pet's children property is an array, where the first element is an instance of Pet with 
+  a name property of Billy (2 different assertions). */
