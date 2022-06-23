@@ -27,6 +27,7 @@ function Pet(name) {
     this.age = MIN_AGE;
     this.hunger = MIN_HUNGER;
     this.fitness = MAX_FITNESS;
+    this.children = [];
 }
 
 Pet.prototype = {
@@ -97,13 +98,7 @@ Pet.prototype.resurrect = function () {
 
 // Adopting a child: dependency injection
 Pet.prototype.adoptChild = function (child) {
-    if (this.children) {
-    this.children.unshift(child); 
-    };
-
-    if (!this.children) {
-    this.children = [child];
-    };
+    this.children.unshift(child);
 
     
 };

@@ -260,7 +260,7 @@ describe('resurrect', () => {
         const parent = new Pet('Fido');
         const child = new Pet('ChildOfFido');
         parent.adoptChild(child);
-        expect(parent.children).toEqual([{ name: 'ChildOfFido', age: 0, hunger: 0, fitness: 10 }]);
+        expect(parent.children).toEqual([{ name: 'ChildOfFido', age: 0, hunger: 0, fitness: 10, children:[]}]);
       });
 
       it('adds the new child instance passed as an argument to the adoptChild method as the first object to the array in the children property of the parent', () => {
@@ -269,7 +269,7 @@ describe('resurrect', () => {
         const child2 = new Pet('SecondChildOfFido');
         parent2.adoptChild(child1);
         parent2.adoptChild(child2);
-        expect(parent2.children).toEqual([{ name: 'SecondChildOfFido', age: 0, hunger: 0, fitness: 10 }, { name: 'ChildOfFido', age: 0, hunger: 0, fitness: 10 }]);
+        expect(parent2.children).toEqual([{ name: 'SecondChildOfFido', age: 0, hunger: 0, fitness: 10, children:[]}, { name: 'ChildOfFido', age: 0, hunger: 0, fitness: 10, children:[]}]);
       });
 
   });
@@ -292,10 +292,3 @@ describe('resurrect', () => {
     });
 });
 
-
-  /* Make 1 Pet instances - the parent.
-
-  Call a method on the parent pet, which you pass the child's name into as an argument e.g. haveBaby('Amelia').
-
-  Assert that the parent pet's children property is an array, where the first element is an instance of Pet with 
-  a name property of Billy (2 different assertions). */
