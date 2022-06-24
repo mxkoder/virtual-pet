@@ -1,8 +1,6 @@
 
 const Pet = require('../src/pet');
 
-// need to refactor tests to remove magic numbers
-
 describe('constructor', () => {
     it('returns an object', () => {
       expect(new Pet('Fido')).toBeInstanceOf(Object);
